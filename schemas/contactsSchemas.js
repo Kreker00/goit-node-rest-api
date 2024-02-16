@@ -19,4 +19,6 @@ const updateContactSchema = Joi.object({
   phone: Joi.string(),
 }).unknown(true);
 
-module.exports = { createContactSchema, updateContactSchema };
+const favoriteSchema = Joi.object({ favorite: Joi.boolean().required() });
+
+module.exports = { createContactSchema, updateContactSchema, favoriteSchema };
