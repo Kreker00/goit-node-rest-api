@@ -12,18 +12,24 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Email is required"],
       unique: true,
-      match: [/^[^\s@]+@[^\s@]+.[^\s@]+$/, "User email is not valid"],
+      match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "User email is not valid"],
     },
     subscription: {
       type: String,
       enum: ["starter", "pro", "business"],
       default: "starter",
     },
-    token: String,
+    token: {
+      type: String,
+      default: null,
+    },
+    avatarURL: String,
   },
   { versionKey: false, timestamps: true }
 );
+
 userSchema.post("save", handleMongooseError);
+
 const User = model("user", userSchema);
 
 module.exports = User;

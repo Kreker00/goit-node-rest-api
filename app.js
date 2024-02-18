@@ -1,22 +1,24 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-
-const { contactsRouter, authRouter } = require("./routes");
-
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 const { DB_HOST } = process.env;
+
+const PORT = 3000;
+
+const { authRouter } = require("./routes");
+const { contactsRouter } = require("./routes");
 
 const app = express();
 
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.use("/users", authRouter);
-
 app.use("/api/contacts", contactsRouter);
 
 app.use((_, res) => {
@@ -32,8 +34,8 @@ mongoose
   .connect(DB_HOST)
   .then(() => console.log("Database connection successful"))
   .then(() =>
-    app.listen(3000, () =>
-      console.log("Server is running. Use our API on port: 3000")
+    app.listen(PORT, () =>
+      console.log(`Server is running. Use our API on port: ${PORT}`)
     )
   )
   .catch((err) => {
