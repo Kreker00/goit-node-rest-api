@@ -4,9 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { DB_HOST } = process.env;
-
-const PORT = 3000;
+const { DB_HOST, PORT } = process.env;
 
 const { authRouter } = require("./routes");
 const { contactsRouter } = require("./routes");
