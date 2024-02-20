@@ -1,11 +1,13 @@
-const authSchema = require("./authSchema");
 const createContactSchema = require("./createContactSchema");
 const updateContactSchema = require("./updateContactSchema");
 const favoriteSchema = require("./favoriteSchema");
+const authSchema = require("./authSchema");
+const emailSchema = require("./emailSchema");
 
 module.exports = {
-  authSchema,
   createContactSchema,
   updateContactSchema,
   favoriteSchema,
+  authSchema,
+  emailSchema,
 };

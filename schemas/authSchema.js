@@ -3,7 +3,7 @@ const Joi = require("joi");
 const authSchema = Joi.object({
   name: Joi.string(),
   email: Joi.string()
-    .pattern(/^[^\s@]+@[^\s@]+.[^\s@]+$/)
+    .pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
     .required(),
   password: Joi.string().min(6).required(),
 });
